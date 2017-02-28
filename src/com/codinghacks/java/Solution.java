@@ -56,3 +56,33 @@ public class Solution {// O(KN)
         System.out.println(maxValue);
     }
 }
+
+/*
+         #   1.......................N...N+1
+5 3      #   0     0     0     0     0     0
+1 2 100  # 100     0  -100     0     0     0       
+2 5 100  # 100   100  -100     0     0  -100
+3 4 100  # 100   100     0     0  -100  -100
+
+
+DiffArray  100  100    0    0  -100  -100
+Cum'veSum  100
+Max = 100
+
+DiffArray  100  100    0    0  -100  -100
+Cum'veSum       200
+Max = 200
+
+DiffArray  100  100    0    0  -100  -100
+Cum'veSum            200
+Max = 200
+
+DiffArray  100  100    0    0  -100  -100
+Cum'veSum                 200
+Max = 200
+
+DiffArray  100  100    0    0  -100  -100
+Cum'veSum                       100
+Max = 200
+
+*/
