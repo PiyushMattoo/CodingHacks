@@ -8,7 +8,7 @@ import java.lang.Integer;
  * @HackerRank: https://www.hackerrank.com/challenges/crush
  * @author mattoop
  */
-public class Solution {// O(KN)
+public class AlgorithimicCrush {// O(KN)
     private static long [] performListComputation(int lowerBound, int upperBound, int valueToAdd, long[] intList) {
         for(int listIndex = lowerBound-1; listIndex <= upperBound-1; listIndex++) {
             intList[listIndex] = intList[listIndex] + valueToAdd;
