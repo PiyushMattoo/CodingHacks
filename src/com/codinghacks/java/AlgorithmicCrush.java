@@ -25,7 +25,7 @@ public class AlgorithmicCrush {// O(KN)
         }
         return max;
     }
-    
+     
     public static void main(String[] args) {
         Scanner inScan = new Scanner(System.in);
         int sizeOfList = inScan.nextInt();
