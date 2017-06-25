@@ -1,6 +1,7 @@
 package com.codinghacks.java;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,21 +10,33 @@ import java.util.List;
  */
 public class CustomStack {
     int numOfElements;
-    List<Object> stackElements;
+    Object[] stackElements;
+    public static final int DEFAULT_SIZE=5;
 
     public CustomStack() {
-        this.stackElements = new ArrayList<>();
+        this.stackElements = new Object[DEFAULT_SIZE];
     }
     
     public Object pop() {
-        numOfElements--;
-        Object element = stackElements.get(stackElements.size()-1);
+        if(numOfElements == 0) {
+            return null;
+        }
+        Object element = stackElements[--numOfElements];
+        stackElements[numOfElements] = null;
         return element;
     }
     
     public void push(Object element) {
-        stackElements.add(element);
+        if(numOfElements >= stackElements.length) {
+            increaseCapacity();
+        }
+        stackElements[numOfElements] = element;
         numOfElements++;
+    }
+    
+    private void increaseCapacity() {
+        int updatedNumOfElements = numOfElements * 2;
+        stackElements = Arrays.copyOf(stackElements, updatedNumOfElements);
     }
     
     public int size() {
