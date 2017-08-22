@@ -1,0 +1,22 @@
+package com.codinghacks.java;
+
+/**
+ *
+ * @author mattoop
+ */
+public class StringReversal {
+    public static void main(String[] str) {
+        StringReversal stringReversal = new StringReversal();
+        System.out.println(stringReversal.reverseString("Piyush"));
+    }
+    
+    public String reverseString(String inputString) {
+        char[] inputCharArray = inputString.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for(int index=inputCharArray.length-1; index >= 0; index--) {
+            sb.append(inputCharArray[index]);
+        }
+        
+        return sb.toString();
+    }
+}
