@@ -1,0 +1,36 @@
+package com.codinghacks.java;
+
+/**
+ *
+ * @author mattoop
+ */
+public class ReverseInt {
+    public static void main(String[] str) {
+        ReverseInt reverseInt = new ReverseInt();
+        System.out.println(reverseInt.reverse(1534236469));
+    }
+    
+    public int reverse(int x) {
+       boolean negativeNumFlag = false;
+        if (x < 0) {
+            negativeNumFlag = true;
+            x = x*-1;
+        }
+        int remainder = 0;  
+        int reverseOutput = 0;
+        int lastReversedOutput = 0;
+        while (x > 0) {
+            remainder = x % 10;
+            reverseOutput = lastReversedOutput * 10 + remainder;
+            if((reverseOutput - remainder)/10 != lastReversedOutput) {
+                return 0;
+            }
+            x = x/10;
+            lastReversedOutput = reverseOutput;
+        }
+        if(negativeNumFlag == true) {
+            reverseOutput = reverseOutput*-1;
+        }
+        return reverseOutput;
+    }
+}
