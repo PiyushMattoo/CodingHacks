@@ -1,0 +1,59 @@
+package com.codinghacks.java;
+
+/**
+ *
+ * @author mattoop
+ */
+public class RomanToInt {
+    public static void main(String[] str) {
+        RomanToInt romanToInt = new RomanToInt();
+        System.out.println(romanToInt.romanToInt("xiv"));
+    }
+    
+    private int processRoman(int lastNumber, int sum, int decimalNumber) {
+        if(lastNumber > decimalNumber) {
+            return sum - decimalNumber;
+        } else {
+            return sum + decimalNumber;
+        }
+    }
+    
+    public int romanToInt(String s) {
+        int outputInt = 0;
+        int lastNumber = 0;
+        String upperRoman = s.toUpperCase();
+        for (int index=upperRoman.length()-1; index >= 0; index--) {
+            switch(upperRoman.charAt(index)) {
+                case 'I':
+                    outputInt = processRoman(lastNumber, outputInt, 1);
+                    lastNumber = 1;
+                    break;
+                case 'V':
+                    outputInt = processRoman(lastNumber, outputInt, 5);
+                    lastNumber = 5;
+                    break;
+                case 'X':
+                    outputInt = processRoman(lastNumber, outputInt, 10);
+                    lastNumber = 10;
+                    break;
+                case 'L':
+                    outputInt = processRoman(lastNumber, outputInt, 50);
+                    lastNumber = 50;
+                    break;
+                case 'C':
+                    outputInt = processRoman(lastNumber, outputInt, 100);
+                    lastNumber = 100;
+                    break;
+                case 'D':
+                    outputInt = processRoman(lastNumber, outputInt, 500);
+                    lastNumber = 500;
+                    break;
+                case 'M':
+                    outputInt = processRoman(lastNumber, outputInt, 1000);
+                    lastNumber = 1000;
+                    break;
+            }
+        }
+        return outputInt;
+    }
+}
