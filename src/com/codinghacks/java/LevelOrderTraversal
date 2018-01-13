@@ -1,0 +1,69 @@
+/*
+https://leetcode.com/problems/binary-tree-level-order-traversal/description/
+ */
+package com.codinghacks.java;
+
+import java.util.List;
+import java.util.ArrayList;
+import java.util.ArrayDeque;
+
+/**
+ *
+ * @author mattoop
+ */
+class LevelOrderTraversal {
+    
+    public static void main(String[] str) {
+        LevelOrderTraversal levelOrderTraversal = new LevelOrderTraversal();
+        TreeNode n1 = new TreeNode(2);
+        TreeNode n2 = new TreeNode(3);
+        TreeNode n3 = new TreeNode(4);
+        TreeNode n4 = new TreeNode(5);
+        TreeNode inputTree = new TreeNode(1);
+        
+        add(inputTree, n1, "left");
+        add(inputTree, n2, "right");
+        add(n1, n3, "left");
+        add(n2, n4, "right");
+        
+        System.out.println(levelOrderTraversal.levelOrder(inputTree));
+    }
+    
+    public static void add(TreeNode parent, TreeNode child, String orientation) {
+        if (orientation.equals("left")) {
+            parent.setLeft(child);
+        } else {
+            parent.setRight(child);
+        }
+    }
+    
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> output = new ArrayList<>();
+        ArrayDeque<TreeNode> queue = new ArrayDeque<>();
+        if(root == null) {
+            return output;
+        }
+        queue.add(root);
+        
+        while(!queue.isEmpty()) { 
+            List<Integer> level = new ArrayList<>();
+            int queueSize = queue.size();
+            
+            for(int queueIndex=0; queueIndex < queueSize; queueIndex++) {
+                TreeNode node = queue.poll();
+                level.add(node.getVal());
+                if(node.getLeft() != null) {
+                    queue.add(node.getLeft());
+                } 
+                if(node.getRight() != null) {
+                    queue.add(node.getRight());
+                }
+            }
+            
+            output.add(level);
+        }
+        
+        
+        return output;
+    }
+}
