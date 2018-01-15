@@ -1,0 +1,60 @@
+package com.codinghacks.java;
+
+import static com.codinghacks.java.LevelOrderTraversal.add;
+
+/**
+ *
+ * @author mattoop
+ */
+public class BottomLeftTreeValue {
+    int height = 0;
+    int solution;
+    
+    public static void main(String[] str) {
+        BottomLeftTreeValue bottomLeftTreeValue = new BottomLeftTreeValue();
+        TreeNode n1 = new TreeNode(2);
+        TreeNode n2 = new TreeNode(3);
+        TreeNode n3 = new TreeNode(4);
+        TreeNode n4 = new TreeNode(5);
+        TreeNode n5 = new TreeNode(6);
+        TreeNode n6 = new TreeNode(7);
+        TreeNode inputTree = new TreeNode(1);
+        
+        add(inputTree, n1, "left");
+        add(inputTree, n2, "right");
+        add(n1, n3, "left");
+        add(n2, n4, "left");
+        add(n2, n5, "right");
+        add(n4, n6, "left");
+        
+        System.out.println(bottomLeftTreeValue.findBottomLeftValue(inputTree));
+    }
+    
+    public static void add(TreeNode parent, TreeNode child, String orientation) {
+        if (orientation.equals("left")) {
+            parent.setLeft(child);
+        } else {
+            parent.setRight(child);
+        }
+    }
+    
+    public int findBottomLeftValue(TreeNode root) {
+        findBottomLeftValue(root, 1);
+        return solution;
+    }
+    
+    public void findBottomLeftValue(TreeNode root, int depth) {
+        if(height < depth) {
+            height = depth;
+            solution = root.getVal();
+        }
+        
+        if(root.getLeft() != null) {
+            findBottomLeftValue(root.getLeft(), depth+1);
+        }
+        if(root.getRight() != null) {
+            findBottomLeftValue(root.getRight(), depth+1);
+        }
+    }
+    
+}
