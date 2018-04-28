@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.cell.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane id="AnchorPane" minWidth="17500.0" prefHeight="15000.0" prefWidth="15000" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javafx.MainController">
+    <children>
+        <Region layoutX="0.0" layoutY="232.0" prefHeight="323.0" prefWidth="1366.0" style="-fx-background-color : linear-gradient( #009966, #e8f5fc);&#10;" />
+        <Region id="sourceHours" layoutY="550.0" prefHeight="229.0" prefWidth="1366.0" style="-fx-background-color : linear-gradient(#e8f5fc, #009966);&#10;" />
+        <Region layoutX="0.0" layoutY="102.0" prefHeight="131.0" prefWidth="1366.0" style="-fx-background-color : linear-gradient(#e8f5fc, #009966);&#10;" />
+        <Region layoutY="664.0" prefHeight="124.0" prefWidth="1366.0" style="-fx-background-color : linear-gradient(#e8f5fc, #009966);&#10;" />
+        <Pane fx:id="clockPane" layoutX="1033.0" layoutY="8.0" maxHeight="45.0" maxWidth="200.0" minHeight="45.0" minWidth="200.0" prefHeight="45.0" prefWidth="200.0" />
+      <TableView fx:id="tableView" layoutY="102.0" prefHeight="410.0" prefWidth="1366.0">
+        <columns>
+            <TableColumn fx:id="tableColumnOne" minWidth="5.0" prefWidth="65.0" text="Make Melt" />
+            <TableColumn fx:id="tableColumnTwo" prefWidth="70.0" text="Swap Melt" />
+            <TableColumn fx:id="tableColumnThree" prefWidth="70.0" text="No Melt" />
+            <TableColumn fx:id="tableColumnOutLocation" prefWidth="175.0" text="Out Location">
+                <cellValueFactory>
+                    <javafx.scene.control.cell.PropertyValueFactory property="id" />
+                </cellValueFactory>
+            </TableColumn>
+        </columns>
+      </TableView>
+    </children>
+</AnchorPane>
