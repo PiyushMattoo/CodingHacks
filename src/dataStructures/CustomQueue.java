@@ -1,4 +1,4 @@
-package com.codinghacks.java;
+package dataStructures;
 
 import java.util.Arrays;
 import java.util.NoSuchElementException;
