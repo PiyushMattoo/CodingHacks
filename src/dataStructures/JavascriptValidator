@@ -1,0 +1,57 @@
+package com.codinghacks.java;
+
+import java.util.Deque;
+import java.util.ArrayDeque;
+import java.util.Map;
+import java.util.HashMap;
+
+/**
+ *
+ * @author mattoop
+ */
+public class JavascriptValidator {
+    public static boolean myFunction(String arg) {
+        char[] openers = {'(', '{', '['};
+        char[] closers = {')','}',']'};
+        Map<Character, Character> openerToCloser = new HashMap<>();
+        openerToCloser.put('(', ')');
+        openerToCloser.put('{', '}');
+        openerToCloser.put('[', ']');
+        Deque<Character> stack = new ArrayDeque<Character>();
+        // write the body of your function here
+        char[] charArray = arg.toCharArray();
+        for(int index=0; index < charArray.length; index++) {
+            if(contains(openers, charArray[index])) {
+                stack.push(charArray[index]);
+            } else if(contains(closers, charArray[index])) {
+                if(stack.size() == 0) {
+                    return false;
+                } 
+                else if(openerToCloser.get(stack.peek()) == charArray[index]) {
+                    stack.pop();
+                } else {
+                    return false;
+                }
+            }
+        }
+        if(stack.size() == 0)
+            return true;
+                else return false;
+    }
+    
+    public static boolean contains(char[] charArray, char ch) {
+        for (char d : charArray) {
+             if(d == ch) {
+                 return true;
+             }   
+        }
+        return false;
+    }
+    
+    public static void main(String[] args) {
+        // run your function through some test cases here
+        // remember: debugging is half the battle!
+        String testInput = "[{()}]";
+        System.out.println(myFunction(testInput) ? "Well-Formed" : "Not Well-formed");
+    }
+}

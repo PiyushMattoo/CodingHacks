@@ -1,0 +1,30 @@
+
+package com.codinghacks.java;
+
+/**
+ *
+ * @author mattoop
+ */
+public class IntPalindrome {
+    public static void main(String[] str) {
+        IntPalindrome intPalindrome = new IntPalindrome();
+        System.out.println(intPalindrome.checkIfPalindrome(1234567));
+    }
+    
+    private boolean checkIfPalindrome(int x) {
+        boolean isPalindrome = false;
+        if(x < 0) {
+            return false;
+        }
+        int rev = 0;
+        int inputInt = x;
+        while(inputInt > 0) {
+            rev = rev*10 + inputInt % 10;
+            inputInt = inputInt/10;
+        }
+        if(x == rev) {
+            isPalindrome = true;
+        }
+        return isPalindrome;
+    }
+}

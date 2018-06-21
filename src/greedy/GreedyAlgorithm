@@ -1,0 +1,28 @@
+package com.codinghacks.java;
+
+/**
+ *
+ * @author mattoop
+ */
+public class GreedyAlgorithm {
+    public static void main(String[] str) {
+        GreedyAlgorithm greedyAlgo = new GreedyAlgorithm();
+        int[] stockPricesYetserday = new int[] {10, 7, 5, 8, 11, 9};
+        System.out.println(greedyAlgo.getMaxProfit(stockPricesYetserday));
+    }
+    
+    public int getMaxProfit(int[] stockPricesYesterday) {
+        if(stockPricesYesterday.length < 2) {
+            throw new IllegalArgumentException("Calculating the profit requires atleast two data points");
+        }
+        int maxProfit = stockPricesYesterday[1] - stockPricesYesterday[0];
+        int minPrice = stockPricesYesterday[0];
+        
+        for(int index=1; index < stockPricesYesterday.length-1; index++) {
+            int potentialProfit = stockPricesYesterday[index] - minPrice;
+            maxProfit = Math.max(maxProfit, potentialProfit);
+            minPrice = Math.min(minPrice, stockPricesYesterday[index]);
+        }
+        return maxProfit;
+    }
+}
